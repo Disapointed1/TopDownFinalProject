@@ -7,6 +7,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Rigidbody2D _rigidbody;
     [Inject] private PlayerHealth _playerHealth;
     private Vector3 _movement;
+    private Animator _animator;
 
 
 
@@ -14,6 +15,7 @@ public class PlayerController : MonoBehaviour
     {
         if(_rigidbody == null)
             _rigidbody = GetComponent<Rigidbody2D>();
+        _animator = GetComponent<Animator>();
     }
 
     private void FixedUpdate()
@@ -27,7 +29,8 @@ public class PlayerController : MonoBehaviour
         float vertical = Input.GetAxisRaw("Vertical");
 
         _movement = new Vector3(horizontal, vertical, 0).normalized;
-        Debug.Log(_playerHealth);
+        _animator.SetBool("IsMoving", _movement.magnitude > 0.01f);
+
     }
 
 }
