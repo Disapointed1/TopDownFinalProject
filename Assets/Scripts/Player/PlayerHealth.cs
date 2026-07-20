@@ -9,5 +9,6 @@ public class PlayerHealth : IDamageable
    public void TakeDamage(int amount)
    {
       _health -= amount;
+      Debug.Log(_health);
    }
 }

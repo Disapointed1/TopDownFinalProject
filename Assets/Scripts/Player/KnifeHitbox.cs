@@ -12,7 +12,7 @@ public class KnifeHitbox : MonoBehaviour
     private Collider2D _collider;
     private bool _isAttacking = false;
 
-    private IEnumerator _AttackCoroutine()
+    private IEnumerator AttackCoroutine()
     {
         _collider.enabled = true;
         yield return new WaitForSeconds(_attackDuration);
@@ -29,7 +29,7 @@ public class KnifeHitbox : MonoBehaviour
             return;
 
         _isAttacking = true;
-        StartCoroutine(_AttackCoroutine());
+        StartCoroutine(AttackCoroutine());
 
     }
 
