@@ -5,8 +5,6 @@ using UnityEngine;
 public class CameraFollow : MonoBehaviour
 {
     [SerializeField] private Transform _player;
-    private Vector3 _velocity;
-
 
     private void LateUpdate()
     {

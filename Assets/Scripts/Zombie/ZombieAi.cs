@@ -8,11 +8,11 @@ public class ZombieAi : MonoBehaviour
    [Inject] private PlayerContext _playerContext;
    [SerializeField] private float _speed;
    [SerializeField] private LayerMask _wallLayerMask;
+   [SerializeField] private float _raycastDistance = 1.5f;
 
    private RaycastHit2D _raycastHit;
    private Vector2 _avoidDirection;
    private bool _isAvoiding;
-
 
    private Rigidbody2D _zombieRigidbody;
    private Vector3 _movement;
@@ -27,7 +27,7 @@ public class ZombieAi : MonoBehaviour
 
       Vector2 directToPlayer = (_playerContext.PlayerTransform.position - transform.position).normalized;
 
-      if(Physics2D.Raycast(transform.position, directToPlayer, 1.5f, _wallLayerMask).collider == null)
+      if(Physics2D.Raycast(transform.position, directToPlayer, _raycastDistance, _wallLayerMask).collider == null)
             _isAvoiding = false;
 
       if (_isAvoiding)
@@ -35,7 +35,7 @@ public class ZombieAi : MonoBehaviour
       else
          _movement = directToPlayer;
 
-      _raycastHit  = Physics2D.Raycast(transform.position, _movement, 1.5f, _wallLayerMask);
+      _raycastHit  = Physics2D.Raycast(transform.position, _movement, _raycastDistance, _wallLayerMask);
 
       if (_raycastHit.collider != null)
       {
@@ -43,7 +43,7 @@ public class ZombieAi : MonoBehaviour
          {
             Vector2 right = Quaternion.Euler(0, 0, angle) * _movement;
 
-            _raycastHit = Physics2D.Raycast(transform.position, right, 1.5f, _wallLayerMask);
+            _raycastHit = Physics2D.Raycast(transform.position, right, _raycastDistance, _wallLayerMask);
             if (_raycastHit.collider == null)
             {
                _movement = right;
@@ -54,7 +54,7 @@ public class ZombieAi : MonoBehaviour
 
             Vector2 left = Quaternion.Euler(0, 0, -angle) * _movement;
 
-            _raycastHit = Physics2D.Raycast(transform.position, left, 1.5f, _wallLayerMask);
+            _raycastHit = Physics2D.Raycast(transform.position, left, _raycastDistance, _wallLayerMask);
             if (_raycastHit.collider == null)
             {
                _movement = left;

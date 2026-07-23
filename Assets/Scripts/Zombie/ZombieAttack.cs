@@ -19,7 +19,7 @@ public class ZombieAttack : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.TryGetComponent<PlayerController>(out var player))
+        if (other.TryGetComponent<PlayerController>(out var _))
         {
             if (_coroutine != null)
                 return;
@@ -29,7 +29,7 @@ public class ZombieAttack : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D other)
     {
-        if (other.TryGetComponent<PlayerController>(out var player))
+        if (other.TryGetComponent<PlayerController>(out var _))
         {
             if (_coroutine != null)
             {

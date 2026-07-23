@@ -44,7 +44,7 @@ public class KnifeHitbox : MonoBehaviour
         if (enemy.TryGetComponent<IDamageable>(out var damageable))
         {
             damageable.TakeDamage(_damage);
-        };
+        }
     }
 
 }

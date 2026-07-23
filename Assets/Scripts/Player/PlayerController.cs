@@ -1,15 +1,14 @@
 using UnityEngine;
+using UnityEngine.Events;
 using Zenject;
 
 public class PlayerController : MonoBehaviour
 {
     [SerializeField] private int _speed = 3;
     [SerializeField] private Rigidbody2D _rigidbody;
-    [Inject] private PlayerHealth _playerHealth;
+
     private Vector3 _movement;
     private Animator _animator;
-
-
 
     private void Awake()
     {

@@ -3,8 +3,8 @@ using UnityEngine;
 public class PlayerContext
 {
 
-    public Transform PlayerTransform{get; set;}
-    public PlayerHealth PlayerHealth{get; set;}
+    public Transform PlayerTransform{get; private set;}
+    public PlayerHealth PlayerHealth{get; private set;}
 
     public PlayerContext(Transform playerTransform,  PlayerHealth playerHealth)
     {
